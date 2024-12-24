@@ -874,6 +874,8 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         widget.layout == Layout.vertical
             ? Column(
@@ -893,8 +895,11 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
                 ],
               )
             : Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Expanded(child: countryDropdown()),
