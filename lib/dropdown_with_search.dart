@@ -73,7 +73,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
         },
         child: Container(
           padding: containerPadding ??
-              const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
           decoration: !disabled
               ? decoration ??
                   BoxDecoration(
