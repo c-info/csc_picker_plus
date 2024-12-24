@@ -1,10 +1,10 @@
 library csc_picker_plus;
 
+import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import 'dropdown_with_search.dart';
 import 'model/select_status_model.dart';
@@ -585,6 +585,7 @@ class CSCPickerPlus extends StatefulWidget {
     this.stateDropdownLabel = "State",
     this.cityDropdownLabel = "City",
     this.countryFilter,
+    this.containerPadding,
   });
 
   final ValueChanged<String>? onCountryChanged;
@@ -597,7 +598,7 @@ class CSCPickerPlus extends StatefulWidget {
 
   final CountryStateLanguage countryStateLanguage;
   final CityLanguage cityLanguage;
-
+  final EdgeInsets? containerPadding;
   final bool disableCountry;
 
   ///Parameters to change style of CSC Picker
@@ -927,6 +928,7 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
       dropdownHeadingStyle: widget.dropdownHeadingStyle,
       itemStyle: widget.dropdownItemStyle,
       decoration: widget.dropdownDecoration,
+      containerPadding: widget.containerPadding,
       disabledDecoration: widget.disabledDropdownDecoration,
       disabled: _countryModels.isEmpty || widget.disableCountry ? true : false,
       dialogRadius: widget.dropdownDialogRadius,
@@ -962,6 +964,7 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
       isArabic: widget.countryStateLanguage == CountryStateLanguage.arabic,
       selectedItemStyle: widget.selectedItemStyle,
       dropdownHeadingStyle: widget.dropdownHeadingStyle,
+      containerPadding: widget.containerPadding,
       itemStyle: widget.dropdownItemStyle,
       decoration: widget.dropdownDecoration,
       dialogRadius: widget.dropdownDialogRadius,
@@ -991,6 +994,7 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
       selectedItemStyle: widget.selectedItemStyle,
       dropdownHeadingStyle: widget.dropdownHeadingStyle,
       itemStyle: widget.dropdownItemStyle,
+      containerPadding: widget.containerPadding,
       decoration: widget.dropdownDecoration,
       dialogRadius: widget.dropdownDialogRadius,
       searchBarRadius: widget.searchBarRadius,

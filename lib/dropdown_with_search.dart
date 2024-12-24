@@ -8,6 +8,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
   final T selected;
   final List items;
   final EdgeInsets? selectedItemPadding;
+  final EdgeInsets? containerPadding;
   final TextStyle? selectedItemStyle;
   final TextStyle? dropdownHeadingStyle;
   final TextStyle? itemStyle;
@@ -38,6 +39,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
     required this.label,
     this.disabled = false,
     this.isArabic,
+    this.containerPadding,
   });
 
   @override
@@ -348,7 +350,7 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DialogTheme dialogTheme = DialogTheme.of(context);
+    final DialogThemeData dialogTheme = DialogTheme.of(context);
     return AnimatedPadding(
       padding: MediaQuery.of(context).viewInsets +
           const EdgeInsets.symmetric(horizontal: 22.0, vertical: 24.0),
