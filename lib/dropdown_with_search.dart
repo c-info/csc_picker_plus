@@ -44,57 +44,63 @@ class DropdownWithSearch<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AbsorbPointer(
-      absorbing: disabled,
-      child: GestureDetector(
-        onTap: () {
-          showDialog(
-              context: context,
-              builder: (context) => SearchDialog(
-                  placeHolder: placeHolder,
-                  title: title,
-                  searchInputRadius: searchBarRadius,
-                  dialogRadius: dialogRadius,
-                  titleStyle: dropdownHeadingStyle,
-                  itemStyle: itemStyle,
-                  displayArabic: isArabic,
-                  items: items)).then((value) {
-            onChanged(value);
-            /* if(value!=null)
-                    {
-                      onChanged(value);
-                      _lastSelected = value;
-                    }
-                    else {
-                      print("Value NULL $value $_lastSelected");
-                      onChanged(_lastSelected);
-                    }*/
-          });
-        },
-        child: Container(
-          padding: containerPadding ??
-              const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-          decoration: !disabled
-              ? decoration ??
-                  BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.grey.shade300, width: 1))
-              : disabledDecoration ??
-                  BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(5)),
-                      color: Colors.grey.shade300,
-                      border:
-                          Border.all(color: Colors.grey.shade300, width: 1)),
-          child: Row(
-            children: [
-              Expanded(
-                  child: Text(selected.toString(),
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          selectedItemStyle ?? const TextStyle(fontSize: 14))),
-              const Icon(Icons.keyboard_arrow_down_rounded)
-            ],
+    return Container(
+      color: Colors.red,
+      child: AbsorbPointer(
+        absorbing: disabled,
+        child: GestureDetector(
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (context) => SearchDialog(
+                    placeHolder: placeHolder,
+                    title: title,
+                    searchInputRadius: searchBarRadius,
+                    dialogRadius: dialogRadius,
+                    titleStyle: dropdownHeadingStyle,
+                    itemStyle: itemStyle,
+                    displayArabic: isArabic,
+                    items: items)).then((value) {
+              onChanged(value);
+              /* if(value!=null)
+                      {
+                        onChanged(value);
+                        _lastSelected = value;
+                      }
+                      else {
+                        print("Value NULL $value $_lastSelected");
+                        onChanged(_lastSelected);
+                      }*/
+            });
+          },
+          child: Container(
+            padding: containerPadding ??
+                const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            decoration: !disabled
+                ? decoration ??
+                    BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
+                        color: Colors.white,
+                        border:
+                            Border.all(color: Colors.grey.shade300, width: 1))
+                : disabledDecoration ??
+                    BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(5)),
+                        color: Colors.grey.shade300,
+                        border:
+                            Border.all(color: Colors.grey.shade300, width: 1)),
+            child: Row(
+              children: [
+                Expanded(
+                    child: Text(selected.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        style: selectedItemStyle ??
+                            const TextStyle(fontSize: 14))),
+                const Icon(Icons.keyboard_arrow_down_rounded)
+              ],
+            ),
           ),
         ),
       ),
