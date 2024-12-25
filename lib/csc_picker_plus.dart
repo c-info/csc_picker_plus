@@ -873,53 +873,56 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        widget.layout == Layout.vertical
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  countryDropdown(),
-                  widget.showStates
-                      ? const SizedBox(height: 10.0)
-                      : Container(),
-                  widget.showStates ? stateDropdown() : Container(),
-                  widget.showStates && widget.showCities
-                      ? const SizedBox(height: 10.0)
-                      : Container(),
-                  widget.showStates && widget.showCities
-                      ? cityDropdown()
-                      : Container()
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Expanded(child: countryDropdown()),
-                      widget.showStates
-                          ? const SizedBox(width: 10.0)
-                          : Container(),
-                      widget.showStates
-                          ? Expanded(child: stateDropdown())
-                          : Container(),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  widget.showStates && widget.showCities
-                      ? cityDropdown()
-                      : Container()
-                ],
-              ),
-      ],
+    return Container(
+      color: Colors.green,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          widget.layout == Layout.vertical
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    countryDropdown(),
+                    widget.showStates
+                        ? const SizedBox(height: 10.0)
+                        : Container(),
+                    widget.showStates ? stateDropdown() : Container(),
+                    widget.showStates && widget.showCities
+                        ? const SizedBox(height: 10.0)
+                        : Container(),
+                    widget.showStates && widget.showCities
+                        ? cityDropdown()
+                        : Container()
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Expanded(child: countryDropdown()),
+                        widget.showStates
+                            ? const SizedBox(width: 10.0)
+                            : Container(),
+                        widget.showStates
+                            ? Expanded(child: stateDropdown())
+                            : Container(),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    widget.showStates && widget.showCities
+                        ? cityDropdown()
+                        : Container()
+                  ],
+                ),
+        ],
+      ),
     );
   }
 
