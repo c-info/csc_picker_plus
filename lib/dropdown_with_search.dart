@@ -18,7 +18,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
   final bool disabled;
   final String label;
   final bool? isArabic;
-
+  final Widget? rightIcon;
   final Function onChanged;
 
   const DropdownWithSearch({
@@ -40,6 +40,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
     this.disabled = false,
     this.isArabic,
     this.containerPadding,
+    this.rightIcon,
   });
 
   @override
@@ -93,7 +94,7 @@ class DropdownWithSearch<T> extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style:
                           selectedItemStyle ?? const TextStyle(fontSize: 14))),
-              const Icon(Icons.keyboard_arrow_down_rounded)
+              rightIcon ?? const Icon(Icons.keyboard_arrow_down_rounded)
             ],
           ),
         ),
