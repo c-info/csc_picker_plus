@@ -587,6 +587,7 @@ class CSCPickerPlus extends StatefulWidget {
     this.countryFilter,
     this.containerPadding,
     this.rightIcon,
+    required this.showCountries,
   });
 
   final ValueChanged<String>? onCountryChanged;
@@ -605,7 +606,7 @@ class CSCPickerPlus extends StatefulWidget {
   ///Parameters to change style of CSC Picker
   final TextStyle? selectedItemStyle, dropdownHeadingStyle, dropdownItemStyle;
   final BoxDecoration? dropdownDecoration, disabledDropdownDecoration;
-  final bool showStates, showCities;
+  final bool showCountries, showStates, showCities;
   final CountryFlag flagState;
   final Layout layout;
   final double? searchBarRadius;
@@ -884,17 +885,19 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
             ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  countryDropdown(),
+                  widget.showCountries
+                      ? countryDropdown()
+                      : const SizedBox.shrink(),
                   widget.showStates
                       ? const SizedBox(height: 10.0)
-                      : Container(),
-                  widget.showStates ? stateDropdown() : Container(),
+                      : const SizedBox.shrink(),
+                  widget.showStates ? stateDropdown() : const SizedBox.shrink(),
                   widget.showStates && widget.showCities
                       ? const SizedBox(height: 10.0)
-                      : Container(),
+                      : const SizedBox.shrink(),
                   widget.showStates && widget.showCities
                       ? cityDropdown()
-                      : Container()
+                      : const SizedBox.shrink()
                 ],
               )
             : Column(
@@ -905,7 +908,9 @@ class CSCPickerPlusState extends State<CSCPickerPlus> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Expanded(child: countryDropdown()),
+                      widget.showCountries
+                          ? Expanded(child: countryDropdown())
+                          : const SizedBox.shrink(),
                       widget.showStates
                           ? const SizedBox(width: 10.0)
                           : Container(),
