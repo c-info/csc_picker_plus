@@ -273,24 +273,34 @@ class _SearchDialogState<T> extends State<SearchDialog> {
                     ? Radius.circular(widget.dialogRadius!)
                     : const Radius.circular(5)),
                 //borderRadius: widget.dialogRadius!=null?BorderRadius.circular(widget.dropDownRadius!):BorderRadius.circular(14),
-                child: ListView.builder(
-                    itemCount: filteredList.length,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                          onTap: () {
-                            FocusScope.of(context).unfocus();
-                            Navigator.pop(context, filteredList[index]);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 18),
-                            child: Text(
-                              filteredList[index].toString(),
-                              style: widget.itemStyle ??
-                                  const TextStyle(fontSize: 14),
-                            ),
-                          ));
-                    }),
+                child: filteredList.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: filteredList.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+                                Navigator.pop(context, filteredList[index]);
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 18),
+                                child: Text(
+                                  filteredList[index].toString(),
+                                  style: widget.itemStyle ??
+                                      const TextStyle(fontSize: 14),
+                                ),
+                              ));
+                        })
+                    : Expanded(
+                        child: Center(
+                          child: Text(
+                            "No results found",
+                            style: widget.itemStyle ??
+                                const TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      ),
               ),
             ),
           ],
