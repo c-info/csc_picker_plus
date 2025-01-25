@@ -292,13 +292,11 @@ class _SearchDialogState<T> extends State<SearchDialog> {
                                 ),
                               ));
                         })
-                    : Expanded(
-                        child: Center(
-                          child: Text(
-                            "No results found",
-                            style: widget.itemStyle ??
-                                const TextStyle(fontSize: 14),
-                          ),
+                    : Center(
+                        child: Text(
+                          "No results found",
+                          style:
+                              widget.itemStyle ?? const TextStyle(fontSize: 14),
                         ),
                       ),
               ),
